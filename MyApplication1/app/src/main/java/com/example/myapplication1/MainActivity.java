@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tGiamSat = findViewById(R.id.tvGiamSat);
+//        tGiamSat.setBackgroundColor(R.color.teal_200);
         tKhopLop = findViewById(R.id.tvKhopLop);
         tDaoLop = findViewById(R.id.tbDaoLop);
         tCaiDat = findViewById(R.id.tbCaiDat);
@@ -32,16 +33,9 @@ public class MainActivity extends AppCompatActivity {
         tGiamSat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                resetColor();
                 System.out.println("clicked1");
-                tGiamSat.setBackgroundColor(R.color.teal_200);
-            }
-        });
-        tGiamSat.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                System.out.println("long click 1");
-                return true;
+                resetColor();
+                tGiamSat.setBackgroundColor(R.color.onclick);
             }
         });
 
@@ -49,15 +43,15 @@ public class MainActivity extends AppCompatActivity {
         tKhopLop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                resetColor();
+                resetColor();
                 System.out.println("clicked2");
-                tKhopLop.setBackgroundColor(R.color.teal_200);
+                tKhopLop.setBackgroundColor(R.color.onclick);
             }
         });
         tDaoLop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                resetColor();
+                resetColor();
                 System.out.println("clicked3");
                 tDaoLop.setBackgroundColor(R.color.teal_200);
             }
@@ -65,17 +59,17 @@ public class MainActivity extends AppCompatActivity {
         tCaiDat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                resetColor();
+                resetColor();
                 System.out.println("clicked4");
-                tCaiDat.setBackgroundColor(R.color.teal_200);
+                tCaiDat.setBackgroundColor(R.color.onclick);
             }
         });
         tAmThanh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                resetColor();
+                resetColor();
                 System.out.println("clicked5");
-                tAmThanh.setBackgroundColor(R.color.teal_200);
+                tAmThanh.setBackgroundColor(R.color.onclick);
             }
         });
 
@@ -83,11 +77,12 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceAsColor")
     public void resetColor() {
-        tGiamSat.setBackgroundColor(R.color.defaultColor);
-        tKhopLop.setBackgroundColor(R.color.defaultColor);
-        tDaoLop.setBackgroundColor(R.color.defaultColor);
-        tCaiDat.setBackgroundColor(R.color.defaultColor);
-        tAmThanh.setBackgroundColor(R.color.defaultColor);
+        tGiamSat.setBackgroundResource(R.color.defaultColor);
+        tGiamSat.setBackgroundResource(R.color.defaultColor);
+        tKhopLop.setBackgroundResource(R.color.defaultColor);
+        tDaoLop.setBackgroundResource(R.color.defaultColor);
+        tCaiDat.setBackgroundResource(R.color.defaultColor);
+        tAmThanh.setBackgroundResource(R.color.defaultColor);
     }
 
 }
