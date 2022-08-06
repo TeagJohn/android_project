@@ -21,7 +21,7 @@
             android:id="@+id/LeftBar"
             android:layout_width="411dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="2"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
@@ -32,6 +32,7 @@
                 android:layout_weight="1"
                 android:background="@color/defaultColor"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/giam_sat"
                 android:textAlignment="center"
@@ -96,14 +97,13 @@
                 tools:ignore="NestedWeights" />
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/RightScreen"
+        <FrameLayout
+            android:id="@+id/right_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/black">
+            android:layout_weight="2">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
 
     </LinearLayout>
 
