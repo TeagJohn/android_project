@@ -1,4 +1,4 @@
-package com.example.myapplication1;
+package com.example.myapplication1.UI.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.myapplication1.R;
 
 public class TireJointFragment extends Fragment {
     private static TireJointFragment jointFragment = null;

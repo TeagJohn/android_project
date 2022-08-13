@@ -1,4 +1,4 @@
-package com.example.myapplication1;
+package com.example.myapplication1.UI.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+
+import com.example.myapplication1.R;
 
 public class TireSettingFragment extends Fragment {
 

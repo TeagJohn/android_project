@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application1</string>
+    <string name="app_name">Tire System</string>
     <string name="giam_sat">Giám sát</string>
     <string name="khop_lop">Khớp lốp</string>
     <string name="dao_lop">Đảo lốp</string>
