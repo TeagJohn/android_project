@@ -1,5 +1,6 @@
 package com.example.myapplication1.UI.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import com.example.myapplication1.R;
 public class TireMonitorFragment extends Fragment {
 
     private static TireMonitorFragment monitor = null;
+    private static String C = "\u2103";
+    private static String F = "\u2109";
 
     private TextView apsuatlopsaubentrai;
     private TextView apsuatlopsaubenphai;
@@ -27,7 +30,7 @@ public class TireMonitorFragment extends Fragment {
     private TextView nhietdoloptruocbenphai;
 
     private String presRuler = "Bar";
-    private String tempatureRuler = "\u2109C";
+    private String temperatureRuler = C;
 
     public static TireMonitorFragment getMonitor() {
         if (monitor == null) {
@@ -42,7 +45,7 @@ public class TireMonitorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tire_monitor, container, false);
-        apsuatloptruocbentrai = view.findViewById(R.id.apsuatlopsaubentrai);
+        apsuatloptruocbentrai = view.findViewById(R.id.apsuatloptruocbentrai);
         apsuatloptruocbenphai = view.findViewById(R.id.apsuatloptruocbenphai);
         apsuatlopsaubentrai = view.findViewById(R.id.apsuatlopsaubentrai);
         apsuatlopsaubenphai = view.findViewById(R.id.apsuatlopsaubenphai);
@@ -66,5 +69,20 @@ public class TireMonitorFragment extends Fragment {
         nhietdolopsaubentrai.setText("-49 \u2109C");
         nhietdoloptruocbenphai.setText("-49 \u2109C");
         nhietdoloptruocbentrai.setText("-49 \u2109C");
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void setPressure(String press) {
+        apsuatlopsaubentrai.setText(press + presRuler);
+        apsuatlopsaubenphai.setText(press + presRuler);
+        apsuatloptruocbenphai.setText(press + presRuler);
+        apsuatloptruocbentrai.setText(press + presRuler);
+    }
+
+    public void setTemperature(String temperature) {
+        nhietdolopsaubenphai.setText(temperature + temperatureRuler);
+        nhietdolopsaubentrai.setText(temperature + temperatureRuler);
+        nhietdoloptruocbenphai.setText(temperature + temperatureRuler);
+        nhietdoloptruocbentrai.setText(temperature + temperatureRuler);
     }
 }

@@ -1,11 +1,7 @@
 package com.example.myapplication1.system;
 
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-
-import com.example.myapplication1.MainActivity;
 
 import java.util.List;
 
@@ -14,7 +10,8 @@ public class TireSystem {
     private static TireSystem instance = null;
 
     private SensorManager sensorManager;
-    private Sensor sensor;
+    private Sensor pressureSensor;
+    private Sensor temperatureSensor;
 
     public static TireSystem getInstance() {
         if (instance == null) {
@@ -38,11 +35,19 @@ public class TireSystem {
         this.sensorManager = sensorManager;
     }
 
-    public Sensor getSensor() {
-        return sensor;
+    public Sensor getPressureSensor() {
+        return pressureSensor;
     }
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
+    public void setPressureSensor(Sensor pressureSensor) {
+        this.pressureSensor = pressureSensor;
+    }
+
+    public Sensor getTemperatureSensor() {
+        return temperatureSensor;
+    }
+
+    public void setTemperatureSensor(Sensor temperatureSensor) {
+        this.temperatureSensor = temperatureSensor;
     }
 }

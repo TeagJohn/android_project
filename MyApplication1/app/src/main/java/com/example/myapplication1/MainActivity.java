@@ -33,10 +33,28 @@ public class MainActivity extends AppCompatActivity {
     TextView tCaiDat;
     TextView tAmThanh;
 
-    SensorEventListener sensorEventListener = new SensorEventListener() {
+    SensorEventListener pressureSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
+            float[] values = sensorEvent.values;
             System.out.println(sensorEvent.values[0]);
+            TireMonitorFragment monitor = TireMonitorFragment.getMonitor();
+            monitor.setPressure(String.valueOf(values[0]));
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int i) {
+
+        }
+    };
+
+    SensorEventListener temperatureSensorEventListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent sensorEvent) {
+            float[] values = sensorEvent.values;
+            System.out.println(sensorEvent.values[0]);
+            TireMonitorFragment monitor = TireMonitorFragment.getMonitor();
+            monitor.setTemperature(String.valueOf(values[0]));
         }
 
         @Override
@@ -66,12 +84,21 @@ public class MainActivity extends AppCompatActivity {
 
         setRightSreen(TireMonitorFragment.getMonitor());
 
+        SensorManager manager = ((SensorManager) getSystemService(Context.SENSOR_SERVICE));
         TireSystem tireSystem = TireSystem.getInstance();
-        tireSystem.setSensorManager((SensorManager) getSystemService(Context.SENSOR_SERVICE));
-        SensorManager manager = tireSystem.getSensorManager();
-        List<Sensor> sensorList = manager.getSensorList(Sensor.TYPE_PRESSURE);
-        tireSystem.setSensor(sensorList.get(0));
-        TireSystem.show(sensorList);
+        tireSystem.setSensorManager(manager);
+
+        List<Sensor> pressureSensorList = manager.getSensorList(Sensor.TYPE_PRESSURE);
+        tireSystem.setPressureSensor(pressureSensorList.get(0));
+
+        List<Sensor> temperatureSensorList = manager.getSensorList(Sensor.TYPE_AMBIENT_TEMPERATURE);
+        tireSystem.setTemperatureSensor(temperatureSensorList.get(0));
+
+        System.out.println("PRESSURE LIST: ");
+        TireSystem.show(pressureSensorList);
+
+        System.out.println("TEMPERATURE LIST: ");
+        TireSystem.show(temperatureSensorList);
     }
 
     @SuppressLint("ResourceAsColor")
@@ -143,16 +170,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SensorManager manager = TireSystem.getInstance().getSensorManager();
-        Sensor sensor = TireSystem.getInstance().getSensor();
-        manager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        TireSystem system = TireSystem.getInstance();
+        SensorManager manager = system.getSensorManager();
+
+        Sensor pressureSensor = system.getPressureSensor();
+        Sensor temperatureSensor = system.getTemperatureSensor();
+
+        manager.registerListener(pressureSensorEventListener, pressureSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        manager.registerListener(temperatureSensorEventListener, temperatureSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         SensorManager manager = TireSystem.getInstance().getSensorManager();
-        Sensor sensor = TireSystem.getInstance().getSensor();
-        manager.unregisterListener(sensorEventListener);
+        Sensor sensor = TireSystem.getInstance().getPressureSensor();
+        manager.unregisterListener(pressureSensorEventListener);
     }
 }
